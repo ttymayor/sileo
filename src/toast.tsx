@@ -162,6 +162,7 @@ export interface SileoPromiseOptions<T = unknown> {
 	success: SileoOptions | ((data: T) => SileoOptions);
 	error: SileoOptions | ((err: unknown) => SileoOptions);
 	action?: SileoOptions | ((data: T) => SileoOptions);
+	position?: SileoPosition;
 }
 
 export const sileo = {
@@ -182,6 +183,7 @@ export const sileo = {
 			...opts.loading,
 			state: "loading",
 			duration: null,
+			position: opts.position,
 		});
 
 		const p = typeof promise === "function" ? promise() : promise;
